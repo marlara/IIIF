@@ -1,2 +1,2 @@
 # IIIF
-script for IIIF
+Script to crawl and harvest with IIIF manifests.
