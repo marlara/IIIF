@@ -26,7 +26,7 @@ def collections_search():
 			manifest_list.write(manifest)
 			manifest_list.write("\n")
 	else:
-		try: #ci possono essere delle collezioni completamente vuote
+		try: #some collections could be completely empty
 			for collection in page1["collections"]:
 				collections_search()
 		except:
@@ -56,7 +56,6 @@ def collection_members_search():
 		manifest_search()
 	else:
 		for member in page1["members"]:
-	#		if member["@type"] == "sc:Manifest":
 			manifest = member["@id"]
 			print(manifest)
 			manifest_list.write(manifest)
