@@ -1,5 +1,6 @@
 import requests
 import requests_cache
+import argparse
 
 manifest_list = open("list-manifest", "w")
 
@@ -68,36 +69,32 @@ def collection_members_search():
 			manifest_list.write(manifest)
 			manifest_list.write("\n")
 
+parser = argparse.ArgumentParser()
+parser.add_argument('url', '--collection', type = str)
+args = parser.parse_args()
 
-url_list = [] #list of collection endpoint (json)
+manifest_list.write("Url: "+args.url+"\n")
 
-for url in url_list:
-	print(url)
-	manifest_list.write("Url: "+url+"\n")
-	try:
-		page = requests.get(url.strip(), headers=headers, verify=False).json()
-		if "manifests" in page:
-			print("manifest type")
-			
-		elif "members" in page:
-			print("members type")
-			for member in page["members"]:
-				if member["@type"] == "sc:Collection":
-					collection_members_search()
-				else:
-					manifest = member["@id"]
-					print(manifest)
-					manifest_list.write(manifest)
-					manifest_list.write("\n")
-		elif "collections" in page:
-			for collection in page["collections"]:
-				collections_search()
-		elif "first" in page:
-			page_next = requests.get(page["first"], headers=headers, verify=False).json()
-			next_page()
+page = requests.get(args.url.strip(), headers=headers, verify=False).json()
+if "manifests" in page:
+	print("manifest type")
+
+elif "members" in page:
+	print("members type")
+	for member in page["members"]:
+		if member["@type"] == "sc:Collection":
+			collection_members_search()
 		else:
-			print("type unknown")
-	except ValueError:
-		print(url+ "Json Error")
-		manifest_list.write(url + "Json Error"+"\n")
+			manifest = member["@id"]
+			print(manifest)
+			manifest_list.write(manifest)
+			manifest_list.write("\n")
+elif "collections" in page:
+	for collection in page["collections"]:
+		collections_search()
+elif "first" in page:
+	page_next = requests.get(page["first"], headers=headers, verify=False).json()
+	next_page()
+else:
+	print("type unknown")
 print("Done")
