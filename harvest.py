@@ -51,5 +51,4 @@ for line in file:
 	else:
 		save_manifest()
 print("Done")
-read_file()
 file.close()
