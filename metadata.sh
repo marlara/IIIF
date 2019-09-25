@@ -13,9 +13,9 @@ iiifflat() {
 
 ( # start subshell
 if cd ./hs-fulda ; then
-: # change directory successful, continue...
+	: # change directory successful, continue...
 else
-exit 77
+	exit 77
 fi
 for myjson in *.json; do
 	echo "writing $myjson"
