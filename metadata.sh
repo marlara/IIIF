@@ -12,7 +12,7 @@ iiifflat() {
 }
 
 ( # start subshell
-if cd ./hs-fulda ; then
+if cd ./namefolder ; then
 	: # change directory successful, continue...
 else
 	exit 77
