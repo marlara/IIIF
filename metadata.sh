@@ -19,7 +19,7 @@ else
 fi
 for myjson in *.json; do
 	echo "writing $myjson"
-	iiifflat
+	iiifflat	
+done
 ) # end subshell
 
-done
