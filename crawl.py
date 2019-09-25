@@ -25,6 +25,7 @@ def collections_search():
 			print(manifest)
 			manifest_list.write(manifest+"\n")
 			n+=1
+			file.write(manifest+"\n")
 			
 	elif "members" in page1:
 		for el in page1["members"]:
@@ -33,6 +34,7 @@ def collections_search():
 			print(manifest)
 			manifest_list.write(manifest)
 			n+=1
+			file.write(manifest+"\n")
 	else:
 		try: #some collections could be completely empty
 			for collection in page1["collections"]:
@@ -70,6 +72,7 @@ def collection_members_search():
 			print(manifest)
 			manifest_list.write(manifest+"\n")
 			n+=1
+			file.write(manifest+"\n")
 	file.write(" Items:"+str(n)+"\n")
 
 
@@ -81,6 +84,7 @@ def manifest_search():
 			print(manifest)
 			manifest_list.write(manifest+"\n")
 			n+=1
+			file.write(manifest+"\n")
 	file.write(" Items:"+str(n)+"\n")
 
 parser = argparse.ArgumentParser()
