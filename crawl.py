@@ -32,7 +32,7 @@ def collections_search():
 			n = 0
 			manifest = el["@id"]
 			print(manifest)
-			manifest_list.write(manifest)
+			manifest_list.write(manifest+"\n")
 			n+=1
 			file.write(manifest+"\n")
 	else:
