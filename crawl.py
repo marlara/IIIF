@@ -101,6 +101,7 @@ file = open(ext.domain+".readme", "w")
 page = requests.get(args.url, headers=headers, verify=False).json()
 file.write("Collection id: "+args.url+"\n")
 if "manifests" in page:
+	manifest_search()
 	print("manifest type")
 	
 elif "members" in page:
