@@ -29,7 +29,6 @@ def collections_search():
 			
 	elif "members" in page1:
 		for el in page1["members"]:
-			n = 0
 			manifest = el["@id"]
 			print(manifest)
 			manifest_list.write(manifest+"\n")
